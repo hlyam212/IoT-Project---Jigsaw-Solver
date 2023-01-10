@@ -1,0 +1,12 @@
+<html>
+   <body>
+      <script type = "text/javascript" 
+                src = "{{ url_for('static', filename = 'script.js') }}" ></script>
+        <link rel="stylesheet" href= "{{ url_for('static', filename = 'style.css') }}"  />
+      <form action = "http://localhost:5000/uploader" method = "POST" enctype = "multipart/form-data">
+         <input type="file" name = "file" />
+         <input type="text" name = "modalNum" id="P02modalNum" hidden/>
+         <input type="submit" value="submit" onClick="P02Submit()"/>
+      </form>
+   </body>
+</html>

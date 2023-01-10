@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Static - Page</title>
+</head>
+<body>
+        <script type = "text/javascript" 
+                src = "{{ url_for('static', filename = 'script.js') }}" ></script>
+        <link rel="stylesheet" href= "{{ url_for('static', filename = 'style.css') }}"  />
+        <h1>1.Puzzle Select</h1>
+        <div id="PS01Area">
+                <div className="d-grid gap-2">
+                    <img src="{{ url_for('static', filename = '1.png') }}" alt="pic1" onClick="P01Select('1')"></img>
+                </div>
+                <div className="d-grid gap-2">
+                    <img src="{{ url_for('static', filename = '16.png') }}" alt="pic1" onClick="P01Select('16')"></img>
+                </div>
+                <div className="d-grid gap-2">
+                    <img src="{{ url_for('static', filename = '136.png') }}" alt="pic1" onClick="P01Select('136')"></img>
+                </div>
+                <div className="d-grid gap-2">
+                    <img src="{{ url_for('static', filename = '154.png') }}" alt="pic1" onClick="P01Select('154')"></img>
+                </div>
+            </div>
+</body>
+</html>
