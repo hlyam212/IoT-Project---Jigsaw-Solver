@@ -31,12 +31,16 @@ pip3 install opencv-python
 pip3 install adafruit-circuitpython-servokit
 `
 
+`
+pip3 install flask
+`
+
 ### MG996R Servo Motor
 
 Before you put them onto the robotic arm, you can first test the way they operate by the code. It will first ask you enter a number between 0-180, and you will see the motor operating.
 -Test single moter(Test Hardware/TestSingleMotor.py)
 -Test 6 motor with PGA9685(Test Hardware/servo_6_test.py)
--Adjust motor on the robot arm operration by commond([servo/angle]:operration;[s]:exit)(Test Hardware/ServoAdjust.py)
+-Adjust motor on the robot arm operration by commond(Test Hardware/ServoAdjust.py)
 
 ### Switched Power Supply
 
@@ -70,49 +74,47 @@ There are sixteen positions that can provide the control of the servo motors. So
 ### STEP 4 : Connect the PCA9685 and the power supply
 
 <font color="red"> Please be careful when you plug into the socket and don't touch the power supply when it's powered. </font>
-![image](https://raw.githubusercontent.com/oohyuti/IoT-Project/main/PCA9685_Power%20Supply.jpg)
-
-### You can watch the video [click here](https://www.youtube.com/watch?v=Q-PQdTYBZAw) to check if you have connected all the things right.
+![image](https://github.com/hlyam212/IoT-Project---Jigsaw-Solver/blob/master/PCA_PowerSupply.jpg?raw=true)
 
 ## Test the robotic arm
 
 After connecting all the hardware components. You can now test your robotic arm by insert the init angles.
-You can find the code in "IoT/init_servo_test.py"
+-Test all 6 motors with PGA9685 to check if it's functional(Test Hardware/servo_6_test.py)
+-Adjust motor on the robot arm operration by commond(Test Hardware/ServoAdjust.py)
+   *Assign a moter and move to a certen angle : position of servo/target angle(ex: 2/180)
+   *Exit : s
 
-You have to change the number on line 13 `INT_ANG  =[179, 0, 70, 0, 110, 90]`. Just insert the numbers you want to test and click run, and the motor will start to turn. Remember to keep your eyes on the devices when it is running. Because when the servo motors are installed onto the robotic arm, there will be some angle restrict to the motors so please be careful.
+Remember to keep your eyes on the devices when it is running. Because when the servo motors are installed onto the robotic arm, there will be some angle restrict to the motors so please be careful.
 
 Remeber to record those angles that each motor can't reach. By this way, you can set up the minimum angles in your main program.
 
-## Run the main program - server.py
+## Flask Web Application
 
-Before you run the main program server.py. There is still something to set up.
+To open web site deploy on raspberry pi, your phone and raspberry pi needs to connect to the same wifi/internet
 
-### Custom Vision - Prediction Key
+1.In the folder "pages", is a simple web application for uploading pictures of the puzzle piece with your moblie device. You need to [deploy your web on raspberry pi](https://peppe8o.com/beginners-guide-to-install-a-flask-python-web-server-on-raspberry-pi/).
+2.After that, run commend "flask run --host=0:0:0:0:5000" to initiate your web. 
+3.Then run "ip address" to find raspberry pi's ip.
+4.Once they're all done, open "http://*ipaddress*:5000/" on your phone.
 
-I've taken off my prediction key, endpoint, iteration name and project id in "server.py".
-You can find all those data in the operation page of custom vision. (Click the right-top setting button and you will see the information.) Remember to publish the one you want to use as the recognition function.
+### Robot arm and settings
 
-### Revise the minimum and maximum restrict of robotic arm
+![image](https://github.com/hlyam212/IoT-Project---Jigsaw-Solver/blob/master/ArmSetting1.jpg?raw=true)
+![image](https://github.com/hlyam212/IoT-Project---Jigsaw-Solver/blob/master/ArmSetting2.jpg?raw=true)
 
-In line30 and line31, I've set up my configuration, you should correct them with your record when your testing your robotic arm by the init_servo_test.py
-
-### Now, you can run "server.py"
+### Now, you can try to follow the instruction of the web, and try to put the puzzle piece on the black area, then upload the picture."
 
 After you run the program, go to 127.0.0.1:5000 to see the user interface. If the console came up with some numbers or you see the green box, you can click the let's go button to see the arm moving.
 
-## There's still something you should know
 
-1. If the console comes up with ` [Errno 98] Address already in use` , it means that the program stopped accidently. 
-You should then enter `netstat -tlnp|grep 5000` in the terminator. It will come up with the PID number that occupies the port number. And next you enter `kill <PID number>`.
-
-2. If the program can't find the camera, you can change then number 0 to -1 in line81 `vc = cv2.VideoCapture(-1)`. It may help.
-
-## [My Video](https://youtu.be/dkQ-8wHkPck)
+### [My Video](https://youtu.be/dkQ-8wHkPck)
 
 ## Reference Link
 
-1. servo_test.py & init_servo_test.py : https://www.aranacorp.com/en/using-a-pca9685-module-with-raspberry-pi/
-2. connect the PCA9685 and your raspberry pi 3 : https://www.aranacorp.com/wp-content/uploads/16-channel-pwm-controller-pca9685-raspberry-pi_bb-1080x675.png
-3. server.py:
-   https://dev.to/stratiteq/puffins-detection-with-azure-custom-vision-and-python-2ca5
-   https://www.hackster.io/ruchir1674/video-streaming-on-flask-server-using-rpi-ef3d75
+1.https://www.geeksforgeeks.org/template-matching-using-opencv-in-python/
+
+2.https://ithelp.ithome.com.tw/articles/10258223
+
+3.https://stackoverflow.com/questions/73886870/what-is-the-simplest-way-to-detect-the-angle-of-rotation-between-two-images-of-t
+
+4.https://peppe8o.com/beginners-guide-to-install-a-flask-python-web-server-on-raspberry-pi/
