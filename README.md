@@ -107,7 +107,7 @@ To open web site deploy on raspberry pi, your phone and raspberry pi needs to co
 After you run the program, go to 127.0.0.1:5000 to see the user interface. If the console came up with some numbers or you see the green box, you can click the let's go button to see the arm moving.
 
 
-### [My Video](https://youtu.be/dkQ-8wHkPck)
+### [My Video]
 
 ## Reference Link
 
