@@ -34,33 +34,28 @@ pip3 install adafruit-circuitpython-servokit
 ### MG996R Servo Motor
 
 Before you put them onto the robotic arm, you can first test the way they operate by the code. It will first ask you enter a number between 0-180, and you will see the motor operating.
-You can also use it to test a single motor after your arm is ready. I will explain it later.
-The code is in "IoT_Project/servo_test.py")
+-Test single moter(Test Hardware/TestSingleMotor.py)
+-Test 6 motor with PGA9685(Test Hardware/servo_6_test.py)
+-Adjust motor on the robot arm operration by commond([servo/angle]:operration;[s]:exit)(Test Hardware/ServoAdjust.py)
 
 ### Switched Power Supply
 
 It can provide the power that the motors need by transfer the AC to DC.
 Because it connect to the socket directly so <font color="red"> please be careful</font>
 
-
-![image](https://raw.githubusercontent.com/oohyuti/IoT-Project/main/Power%20Supply.JPG)
-
-Tip : I stick the chopsticks on the wire and hold the chopsticks instead of the plug itself. So that if there is anything wrong, you won't get hurt.
-![image](https://raw.githubusercontent.com/oohyuti/IoT-Project/main/plug.jpg)
+![image](https://github.com/hlyam212/IoT-Project---Jigsaw-Solver/blob/master/PowerSupply.jpg?raw=true)
 
 ### 6-DOF Robotic Arm
 
 If you got the arm and the servo motors seperately, you can puzzle them up by [this link](https://www.taiwansensor.com.tw/6軸機械手臂組裝教學/).(Remember to double check the direction or you may need to reinstall them if you put them in the wrong directtion.
 
-### Custom Vision
+### Feature Matching - OpenCV
 
-It is a service provided by Microsoft. You can use it to train your acne model and use the prediction key to call the API in your code. The thing you need to do is to look for all kinds of acne's picture and tag those acnes in the custom vision page.(https://blog.cavedu.com/2019/09/30/azure-custom-vision/).
+In this project, I'm tring to match a puzzle piece in to a complte picture. I use [OpenCV](https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html) to do feature matching, enable to detect the position of the puzzle piece.
 
 ## Connect the components - How it looks like
 
-### STEP 1 : Put the pi camera on your raspberry pi 3
-
-### STEP 2 : Connect the PCA9685 and your raspberry pi 3
+### STEP 1 : Connect the PCA9685 and your raspberry pi 3
 
 You can check out the picture and you can put the 'vcc' to pinout 1(3v3 power), too.
 <font color="red"> Please be careful! Don't insert the wrong pinout or it will easily burn out. </font>
@@ -68,7 +63,7 @@ You can check out the picture and you can put the 'vcc' to pinout 1(3v3 power), 
 ![image](https://www.aranacorp.com/wp-content/uploads/16-channel-pwm-controller-pca9685-raspberry-pi_bb-1080x675.png)
 
 
-### STEP 3 : Connect the servo motors and your PCA9685
+### STEP 2 : Connect the servo motors and your PCA9685
 
 There are sixteen positions that can provide the control of the servo motors. So you can insert the dupont lines one by one from the 0 position.
 
